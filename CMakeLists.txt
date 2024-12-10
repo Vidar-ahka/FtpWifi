@@ -12,17 +12,34 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+#set(DIR_INCLUDE )
+
+include_directories(./include)
+
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+
+
+    include/main/mainwindow.h
+    include/file/fileabstract.h
+    include/file/file.h
+    include/file/filemanagerabstract.h
+    include/file/filemanager.h
+
+    src/main/main.cpp
+    src/main/mainwindow.cpp
+    src/main/mainwindow.ui
+
+    src/file/file.cpp
+    src/file/filemanager.cpp
+
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ftpwifi
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET ftpwifi APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -31,17 +48,21 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
     if(ANDROID)
         add_library(ftpwifi SHARED
+
             ${PROJECT_SOURCES}
+
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(ftpwifi
+
             ${PROJECT_SOURCES}
+
         )
     endif()
 endif()
-
+target_link_directories(ftpwifi PUBLIC  ./include)
 target_link_libraries(ftpwifi PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(ftpwifi PROPERTIES
