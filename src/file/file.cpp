@@ -1,14 +1,13 @@
 #include"file/file.h"
 
-
 File::File() noexcept{
 
 }
 
-File::File(QString  path)
+File::File(QString  path) : AbstractFile(path)
 {
     file = std::make_shared<QFile>(path);
-    if(!file->open( QIODevice::Append | QIODevice::ReadOnly))
+    if(!file->open(QIODevice::ReadOnly))
     {
         throw "file dont open or dont create";
     }
@@ -20,11 +19,6 @@ QByteArray File::read(quint64 read_size)
 QByteArray File::readall()
 {
     return file->readAll();
-}
-quint64 File::append(QByteArray byte)
-{
-    file->write(byte);
-    return file->size();
 }
 File::~File()
 {
