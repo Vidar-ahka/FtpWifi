@@ -3,24 +3,20 @@
 #include"QString"
 #include"QObject"
 #include"functional"
-class FileAbstract
+class AbstractFile
 {
 
 public:
-    FileAbstract() = default;
-    FileAbstract(QString path)
-    {
-
-    }
-
+    AbstractFile() = default;
+    AbstractFile(QString _path):path(_path){}
     virtual QByteArray read(quint64 read_size) = 0;
     virtual QByteArray readall() = 0;
-    virtual quint64    append(QByteArray byte) = 0;
-    virtual ~FileAbstract()
+    virtual ~AbstractFile()
     {
 
     }
 private:
+    QString path;
 
 
 };
