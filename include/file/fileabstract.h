@@ -15,7 +15,7 @@ public:
     {
 
     }
-private:
+protected:
     QString path;
 
 

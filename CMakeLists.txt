@@ -12,18 +12,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-#set(DIR_INCLUDE )
-
 include_directories(./include)
 
 set(PROJECT_SOURCES
 
-
     include/main/mainwindow.h
     include/file/fileabstract.h
     include/file/file.h
-    include/file/filemanagerabstract.h
+
     include/file/filemanager.h
+
+    include/load/abstractload.h
+    include/load/dataloadmanager.h
+    include/load/load.h
 
     src/main/main.cpp
     src/main/mainwindow.cpp
@@ -31,6 +32,9 @@ set(PROJECT_SOURCES
 
     src/file/file.cpp
     src/file/filemanager.cpp
+
+    src/load/dataloadmanager.cpp
+    src/load/load.cpp
 
 
 )
