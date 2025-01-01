@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.24.2)
 
 project(ftpwifi VERSION 0.1 LANGUAGES CXX)
 
@@ -9,67 +9,44 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+
+find_package(QT NAMES Qt6          REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-include_directories(./include)
+include_directories("./include")
 
-set(PROJECT_SOURCES
 
+set(PROJECT_HEADERS
     include/main/mainwindow.h
     include/file/fileabstract.h
     include/file/file.h
-
     include/file/filemanager.h
-
     include/load/abstractload.h
     include/load/dataloadmanager.h
     include/load/load.h
-
-    src/main/main.cpp
+)
+set(PROJECT_SOURCES
     src/main/mainwindow.cpp
-    src/main/mainwindow.ui
-
     src/file/file.cpp
     src/file/filemanager.cpp
-
     src/load/dataloadmanager.cpp
     src/load/load.cpp
-
-
+)
+set(PROJECT_UI  
+    src/main/mainwindow.ui
+)
+add_library(ftp_lib     
+    ${PROJECT_HEADERS}
+    ${PROJECT_SOURCES}
+    ${PROJECT_UI}
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(ftpwifi
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
+target_link_directories(ftp_lib PUBLIC  ./include)
+target_link_libraries  (ftp_lib PUBLIC  Qt${QT_VERSION_MAJOR}::Widgets )
 
-    )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET ftpwifi APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
-else()
-    if(ANDROID)
-        add_library(ftpwifi SHARED
 
-            ${PROJECT_SOURCES}
 
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(ftpwifi
-
-            ${PROJECT_SOURCES}
-
-        )
-    endif()
-endif()
-target_link_directories(ftpwifi PUBLIC  ./include)
-target_link_libraries(ftpwifi PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-
-set_target_properties(ftpwifi PROPERTIES
+set_target_properties(ftp_lib PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -77,10 +54,20 @@ set_target_properties(ftpwifi PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install(TARGETS ftpwifi
+install(TARGETS ftp_lib
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(ftpwifi)
+
+
+set(TEST_VAR TRUE)
+if(NOT TEST_VAR)
+qt_add_executable(ftpwifi
+        MANUAL_FINALIZATION
+        src/main/main.cpp
+    )
+target_link_libraries(ftpwifi PRIVATE  ftp_lib)
+qt_finalize_executable(ftpwifi)
+else()
+add_subdirectory("./test")
 endif()
