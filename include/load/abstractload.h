@@ -5,10 +5,9 @@
 class AbstractLoad
 {
 public:
-    AbstractLoad();
+    AbstractLoad() = default;
     AbstractLoad(QString _path) : path(_path){}
-    virtual quint64 append(QByteArray byte);
-
+    virtual quint64 append(QByteArray byte) =  0;
     virtual ~AbstractLoad()
     {
 
