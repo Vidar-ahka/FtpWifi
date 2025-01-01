@@ -49,7 +49,7 @@ File & File::operator =(File&& file)
 
 QByteArray File::read(quint64 read_size)
 {
-    if(file_byte->isOpen())
+    if(!isOpen())
     {
         return 0;
     }
@@ -57,15 +57,20 @@ QByteArray File::read(quint64 read_size)
 }
 QByteArray File::readall()
 {
-    if(file_byte->isOpen())
+    if(!isOpen())
     {
         return 0;
     }
     return file_byte->readAll();
 }
+
+bool File::isOpen()
+{
+    return  file_byte && file_byte->isOpen();
+}
 File::~File()
 {
-    if(file_byte)
+    if(isOpen())
     {
         file_byte->close();
     }
