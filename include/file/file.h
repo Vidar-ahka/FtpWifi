@@ -17,7 +17,7 @@ public:
     File & operator =(const File& file);
     File & operator =( File&& file);
 
-    void Move(File & file);
+
 
     QByteArray  read(quint64 read_size) override;
     QByteArray  readall()               override ;
@@ -25,9 +25,11 @@ public:
 
     virtual    ~File();
 private:
+
     std::shared_ptr<QFile> file_byte;
     QFile file_1;
     bool create_file(QString path);
+    void Move(File & file);
 
 
 
