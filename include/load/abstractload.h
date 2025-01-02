@@ -12,7 +12,7 @@ public:
     {
 
     }
-private:
+protected:
     QString path;
 };
 #endif
