@@ -1,17 +1,17 @@
 #include"load/load.h"
 
 Load::Load(){}
-Load::Load(QString path):AbstractLoad(path)
+Load::Load(QString path , quint64 _exsize):AbstractLoad(path) , exsize(_exsize)
 {
     create_file(path);
-
 }
 quint64  Load::append(QByteArray  byte)
 {
-    if(isOpen())
+    if(isOpen()&&isCompleted())
     {
+        cursize+=byte.size();
         file->write(byte);
-        return byte.size();
+        return cursize;
     }
     return 0 ;
 }
@@ -49,7 +49,6 @@ Load::~Load()
     }
 
 }
-
 void Load::Move(Load &load)
 {
     this->file = std::move(load.file);
@@ -59,4 +58,9 @@ void Load::Move(Load &load)
 bool Load::isOpen()
 {
     return file&&file->isOpen();
+}
+
+bool Load::isCompleted()
+{
+    return cursize == exsize;
 }
