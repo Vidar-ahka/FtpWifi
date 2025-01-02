@@ -7,18 +7,21 @@ class Load : public  AbstractLoad
 {
 public:
     Load();
-    Load(QString path);
+    Load(QString path);    
+    Load(Load &  load);
+    Load(Load && load);
+
+    Load & operator = (Load & load);
+    Load & operator = (Load && load);
+
+
+
     quint64 append(QByteArray  byte);
+    bool isOpen();
     virtual ~Load();
-    bool isOpen()
-    {
-       return file->isOpen();
-    }
-    bool isCreate()
-    {
-        return file ? true : false;
-    }
+
 private:
+    void Move(Load & load);
     bool create_file(QString path);
     std::shared_ptr<QFile> file;
 };
