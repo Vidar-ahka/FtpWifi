@@ -18,7 +18,6 @@ public:
     bool isOpen();
     bool isCompleted();
     virtual ~Load();
-
 private:
     void Move(Load & load);
     bool create_file(QString path);
