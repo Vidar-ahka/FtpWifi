@@ -5,6 +5,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    //File file(std::move(File("C:/qt_project/conwife/headers/bridge.h")));
+
+
     ui->setupUi(this);
 }
 

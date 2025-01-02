@@ -3,19 +3,35 @@
 #include"fileabstract.h"
 #include"QFile"
 #include"QString"
-#include"functional"
 #include"memory"
-class File : public FileAbstract
+#include"QDebug"
+class File : public AbstractFile
 {
 public:
-    File() noexcept;
+    File() = default ;
     File(QString  path);
+
+    File(  File & file);
+    File( File && file);
+
+    File & operator =(const File& file);
+    File & operator =( File&& file);
+
+
+
     QByteArray  read(quint64 read_size) override;
     QByteArray  readall()               override ;
-    quint64     append(QByteArray byte) override;
+    bool isOpen();
+
     virtual    ~File();
 private:
-    std::shared_ptr<QFile> file;
+
+    std::shared_ptr<QFile> file_byte;
+    QFile file_1;
+    bool create_file(QString path);
+    void Move(File & file);
+
+
 
 
 
