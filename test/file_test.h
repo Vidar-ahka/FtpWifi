@@ -5,7 +5,9 @@
 #include <QByteArray>
 #include <QDir>
 #include"file/file.h"
+#include"file/parsingfileinfo.h"
 #include"QFile"
+
 class FileTest : public QObject
 {
     Q_OBJECT
@@ -73,6 +75,21 @@ private slots:
         file2 = std::move(file1);
         QVERIFY(!file1.isOpen());
         QCOMPARE(file2.isOpen(), true);
+    }
+    void testGetInfo()
+    {
+        File file(path_file);
+        QString str = file.getFileInfo();
+
+        QString str2 = "size:"+QString::number(test_byte.size())+"\n"+"name:"+"test_file.txt";
+
+        QCOMPARE(str,str2);
+
+        ParsingFileInfo parsing(str);
+
+        QCOMPARE(parsing.getName(),"test_file.txt");
+
+
     }
 
     void cleanupTestCase() {

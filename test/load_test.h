@@ -4,6 +4,7 @@
 #include"QTest"
 #include"QDir"
 #include"load/load.h"
+#include"load/dataloadmanager.h"
 class LoadTest : public  QObject
 {
     Q_OBJECT
@@ -18,7 +19,7 @@ private slots:
         {
             dir.mkdir(path_dir);
         }
-        load = Load(path_file);
+        load = Load(path_file,data.size());
 
     }
     void testAppendFile()
@@ -40,6 +41,13 @@ private slots:
         QVERIFY(lode_move.isOpen());
         QVERIFY(!load.isOpen());
     }
+    void testDataLoadManager()
+    {
+        QByteArray byte ="helloworld";
+        DataLoadManager log;
+        log.createLoad(4,"name.txt",byte.size());
+        log.appenddata(4,byte);
+    }
     void cleanupTestCase()
     {
         QDir dir;
@@ -51,6 +59,7 @@ private slots:
         }
 
 }
+
 private:
     Load load;
     QString    path_dir;

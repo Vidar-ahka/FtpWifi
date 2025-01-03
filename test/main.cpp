@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     LoadTest f;
     FileTest t;
-    QTest::qExec(&f, argc, argv);
+    QTest::qExec(&t, argc, argv);
 
     return 0;
 }
