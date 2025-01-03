@@ -10,6 +10,7 @@ File::File( File & file)
 {
     this->operator =(file);
 }
+
 File & File:: operator =(const File& file_copy)
 {
     this->path = file_copy.path;
@@ -25,16 +26,6 @@ File & File:: operator =(const File& file_copy)
     return *this;
 }
 
-void File::Move(File &file)
-{
-    this->path = std::move( file.path);
-    if(file.file_byte)
-    {
-        this->file_byte =  std::move(file.file_byte);
-    }
-
-}
-
 File::File( File && file)
 {
     Move(file);
@@ -47,6 +38,24 @@ File & File::operator =(File&& file)
      return *this;
 }
 
+void File::Move(File &file)
+{
+    this->path = std::move( file.path);
+    if(file.file_byte)
+    {
+        this->file_byte =  std::move(file.file_byte);
+    }
+
+}
+
+
+QString     File::getFileInfo()
+{
+    QFileInfo file_info(this->path);
+    QString str ="size:"+QString ::number(file_info.size())+"\n"+"name:"+file_info.fileName();
+    return str;
+}
+
 QByteArray File::read(quint64 read_size)
 {
     if(!isOpen())
@@ -55,6 +64,7 @@ QByteArray File::read(quint64 read_size)
     }
     return file_byte->read(read_size);
 }
+
 QByteArray File::readall()
 {
     if(!isOpen())
@@ -68,6 +78,7 @@ bool File::isOpen()
 {
     return  file_byte && file_byte->isOpen();
 }
+
 File::~File()
 {
     if(isOpen())
