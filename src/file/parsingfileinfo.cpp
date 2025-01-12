@@ -3,10 +3,10 @@
 
 ParsingFileInfo::ParsingFileInfo(QString fileinfo)
 {
-   qDebug()<<"index "<<fileinfo.mid(5,-1);
+
    this->name = processing("name",fileinfo);
    this->size = processing("size",fileinfo).toUInt();
-   qDebug()<<"name: "<< name<< " size: "<<size;
+
 
 
 }
