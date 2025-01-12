@@ -5,6 +5,8 @@
 #include"QString"
 #include"memory"
 #include"QDebug"
+#include"QFileInfo"
+
 class File : public AbstractFile
 {
 public:
@@ -20,8 +22,9 @@ public:
 
 
     QByteArray  read(quint64 read_size) override;
-    QByteArray  readall()               override ;
-    bool isOpen();
+    QByteArray  readall()     override;
+    QString     getFileInfo() override;
+    bool isOpen()             override;
 
     virtual    ~File();
 private:
