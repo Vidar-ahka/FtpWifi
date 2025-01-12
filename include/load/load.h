@@ -14,9 +14,9 @@ public:
 
     Load & operator = (Load & load);
     Load & operator = (Load && load);
-    quint64 append(QByteArray  byte);
-    bool isOpen();
-    bool isCompleted();
+    quint64 append(QByteArray  byte)override;
+    bool isOpen()      override;
+    bool isCompleted() override;
     virtual ~Load();
 private:
     void Move(Load & load);
