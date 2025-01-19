@@ -1,11 +1,11 @@
 #include"load/load.h"
 
 Load::Load(){}
-Load::Load(QString path , quint64 _exsize):AbstractLoad(path) , exsize(_exsize) , cursize(0)
+Load::Load(const QString path , const quint64 _exsize):AbstractLoad(path) , exsize(_exsize) , cursize(0)
 {
     create_file(path);
 }
-quint64  Load::append(QByteArray  byte)
+quint64  Load::append(const QByteArray  byte)
 {
     if(isOpen()&&!isCompleted())
     {
@@ -22,7 +22,7 @@ bool Load::create_file(QString path)
     return file->open(QIODevice::Append);
 }
 
-Load::Load   (Load &  load)
+Load::Load   (const Load &  load)
 {
     this->operator =(load);
 }
@@ -30,7 +30,7 @@ Load::Load   (Load && load)
 {
     Move(load);
 }
-Load & Load::operator = (Load & load)
+Load & Load::operator = (const Load & load)
 {
    create_file(load.path);
    cursize = load.cursize;

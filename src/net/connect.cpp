@@ -10,7 +10,7 @@ QByteArray Connect::read()
 {
 
 }
-quint64    Connect::send(std::shared_ptr<AbstractFile> file)
+quint64    Connect::send(const std::shared_ptr<AbstractFile> file)
 {
     if(file->isOpen())
     {

@@ -13,7 +13,7 @@ public:
         this->socket = std::move(socket);
     }
     virtual QByteArray read() = 0;
-    virtual quint64    send(std::shared_ptr<AbstractFile> file) = 0;
+    virtual quint64    send(const std::shared_ptr<AbstractFile> file) = 0;
 protected:
     std::unique_ptr<QAbstractSocket> socket;
 signals:

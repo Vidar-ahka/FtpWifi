@@ -7,14 +7,14 @@ class Load : public  AbstractLoad
 {
 public:
     Load();
-    Load(QString path , quint64 exsize);
+    Load(const QString path , const quint64 exsize);
 
-    Load(Load &  load);
+    Load(const Load &  load);
     Load(Load && load);
 
-    Load & operator = (Load & load);
+    Load & operator = (const Load & load);
     Load & operator = (Load && load);
-    quint64 append(QByteArray  byte)override;
+    quint64 append(const QByteArray  byte)override;
     bool isOpen()      override;
     bool isCompleted() override;
     virtual ~Load();

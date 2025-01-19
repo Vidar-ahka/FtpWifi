@@ -9,7 +9,7 @@ public:
     Connect() = default;
     Connect(std::unique_ptr<QAbstractSocket> socket);
     QByteArray read() override;
-    quint64    send(std::shared_ptr<AbstractFile> file) override;
+    quint64    send( const std::shared_ptr<AbstractFile> file) override;
 
 private:
    static int id;

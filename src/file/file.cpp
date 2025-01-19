@@ -1,12 +1,12 @@
 #include"file/file.h"
 
 
-File::File(QString  path) : AbstractFile(path)
+File::File(const QString  path) : AbstractFile(path)
 {
    create_file(path);
 }
 
-File::File( File & file)
+File::File(const File & file)
 {
     this->operator =(file);
 }
@@ -56,7 +56,7 @@ QString     File::getFileInfo()
     return str;
 }
 
-QByteArray File::read(quint64 read_size)
+QByteArray File::read(const quint64 read_size)
 {
     if(!isOpen())
     {

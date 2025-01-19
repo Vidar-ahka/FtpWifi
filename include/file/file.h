@@ -11,17 +11,17 @@ class File : public AbstractFile
 {
 public:
     File() = default ;
-    File(QString  path);
+    File(const QString  path);
 
-    File(  File & file);
+    File(const  File & file);
     File( File && file);
 
     File & operator =(const File& file);
-    File & operator =( File&& file);
+    File & operator =(File&& file);
 
 
 
-    QByteArray  read(quint64 read_size) override;
+    QByteArray  read(const    quint64 read_size) override;
     QByteArray  readall()     override;
     QString     getFileInfo() override;
     bool isOpen()             override;

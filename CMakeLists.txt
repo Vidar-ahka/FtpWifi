@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6          REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Network)
 
 include_directories("./include")
 
@@ -21,16 +22,24 @@ set(PROJECT_HEADERS
     include/file/fileabstract.h
     include/file/file.h
     include/file/filemanager.h
+    include/file/abstractparsingfileinfo.h
+    include/file/parsingfileinfo.h
     include/load/abstractload.h
     include/load/dataloadmanager.h
     include/load/load.h
+
+    include/net/connect.h
+    include/net/abstractconnect.h
+
 )
 set(PROJECT_SOURCES
     src/main/mainwindow.cpp
     src/file/file.cpp
     src/file/filemanager.cpp
+    src/file/parsingfileinfo.cpp
     src/load/dataloadmanager.cpp
     src/load/load.cpp
+    src/net/connect.cpp
 )
 set(PROJECT_UI  
     src/main/mainwindow.ui
@@ -43,6 +52,8 @@ add_library(ftp_lib
 
 target_link_directories(ftp_lib PUBLIC  ./include)
 target_link_libraries  (ftp_lib PUBLIC  Qt${QT_VERSION_MAJOR}::Widgets )
+target_link_libraries  (ftp_lib PUBLIC  Qt${QT_VERSION_MAJOR}::Network )
+
 
 
 

@@ -3,12 +3,8 @@
 
 ParsingFileInfo::ParsingFileInfo(QString fileinfo)
 {
-
    this->name = processing("name",fileinfo);
    this->size = processing("size",fileinfo).toUInt();
-
-
-
 }
 QString  ParsingFileInfo::getName()
 {

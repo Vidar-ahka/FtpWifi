@@ -8,7 +8,7 @@ class FileManager
 {
 public:
     FileManager();
-    std::shared_ptr<File> getFile(QString path);
+    std::shared_ptr<File> getFile( const QString path);
 private:
 };
 #endif

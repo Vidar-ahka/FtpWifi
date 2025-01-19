@@ -9,6 +9,7 @@ add_executable(ftp_test
 main.cpp
 file_test.h
 load_test.h
+net_test.h
 
 
 
