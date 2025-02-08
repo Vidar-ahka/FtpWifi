@@ -30,6 +30,8 @@ set(PROJECT_HEADERS
 
     include/net/connect.h
     include/net/abstractconnect.h
+    include/net/server.h
+
 
 )
 set(PROJECT_SOURCES
@@ -40,6 +42,7 @@ set(PROJECT_SOURCES
     src/load/dataloadmanager.cpp
     src/load/load.cpp
     src/net/connect.cpp
+    src/net/server.cpp
 )
 set(PROJECT_UI  
     src/main/mainwindow.ui
