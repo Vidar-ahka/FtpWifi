@@ -31,6 +31,8 @@ set(PROJECT_HEADERS
     include/net/connect.h
     include/net/abstractconnect.h
     include/net/server.h
+    include/net/connectfactory.h
+
 
 
 )
@@ -43,6 +45,8 @@ set(PROJECT_SOURCES
     src/load/load.cpp
     src/net/connect.cpp
     src/net/server.cpp
+    src/net/connectfactory.cpp
+
 )
 set(PROJECT_UI  
     src/main/mainwindow.ui
