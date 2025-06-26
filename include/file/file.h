@@ -26,7 +26,7 @@ public:
     QString     getFileInfo() override;
     bool isOpen()             override;
 
-    virtual    ~File();
+    virtual    ~File() ;
 private:
 
     std::shared_ptr<QFile> file_byte;

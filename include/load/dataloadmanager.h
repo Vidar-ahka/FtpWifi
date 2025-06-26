@@ -12,6 +12,8 @@ public:
     DataLoadManager( const QString _load_dir);
     bool createLoad(const int id,const QString path,const quint64 exsize);
     quint64 appenddata(const int id , const QByteArray byte);
+    virtual  ~DataLoadManager() = default;
+
 
 
 private:

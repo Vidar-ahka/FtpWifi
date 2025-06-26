@@ -8,6 +8,7 @@ public:
     AbstractParsingFileInfo(QString fileinfo);
     virtual QString getName()  = 0;
     virtual quint64 getSize()  = 0;
+    virtual  ~AbstractParsingFileInfo() = default;
 protected:
     QString name;
     quint64 size;

@@ -1,6 +1,11 @@
 #include"net/server.h"
-#include"QString"
 
+
+Server:: Server()
+{
+
+
+}
 void Server::slotread(int id , QByteArray byte)
 {
     emit signalread(id, byte);

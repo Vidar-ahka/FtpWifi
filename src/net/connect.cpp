@@ -6,10 +6,7 @@ Connect::Connect(std::unique_ptr<QAbstractSocket> socket)  : AbstractConnect(std
     QObject::connect(this->socket.get() , &QAbstractSocket::readyRead , this, &Connect::readyread);
 
 }
-QByteArray Connect::read()
-{
 
-}
 quint64    Connect::send(const std::shared_ptr<AbstractFile> file)
 {
     if(file->isOpen())
@@ -24,5 +21,13 @@ void Connect::readyread()
 {
     emit signalread(id_connect,socket->readAll());
 }
+
+QByteArray read()
+{
+
+
+
+}
+
 
 int Connect::id = 0;
