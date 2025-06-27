@@ -19,11 +19,14 @@ include_directories("./include")
 
 set(PROJECT_HEADERS
     include/main/mainwindow.h
+
     include/file/fileabstract.h
     include/file/file.h
     include/file/filemanager.h
     include/file/abstractparsingfileinfo.h
     include/file/parsingfileinfo.h
+    include/file/jsonfile.h
+
     include/load/abstractload.h
     include/load/dataloadmanager.h
     include/load/load.h
@@ -37,12 +40,18 @@ set(PROJECT_HEADERS
 
 )
 set(PROJECT_SOURCES
+    src/main/main.cpp
     src/main/mainwindow.cpp
+
     src/file/file.cpp
     src/file/filemanager.cpp
     src/file/parsingfileinfo.cpp
+    src/file/jsonfile.cpp
+
+
     src/load/dataloadmanager.cpp
     src/load/load.cpp
+
     src/net/connect.cpp
     src/net/server.cpp
     src/net/connectfactory.cpp
