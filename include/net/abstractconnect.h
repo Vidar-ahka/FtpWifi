@@ -19,7 +19,7 @@ public:
 protected:
     std::unique_ptr<QAbstractSocket> socket;
 signals:
-    void signalread(int id_message,QByteArray byte);
+    void signalread(QByteArray byte);
 };
 
 #endif
