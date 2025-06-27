@@ -25,7 +25,7 @@ set(PROJECT_HEADERS
     include/file/filemanager.h
     include/file/abstractparsingfileinfo.h
     include/file/parsingfileinfo.h
-    include/file/jsonfile.h
+    include/file/filemetadatacreate.h
 
     include/load/abstractload.h
     include/load/dataloadmanager.h
@@ -46,7 +46,8 @@ set(PROJECT_SOURCES
     src/file/file.cpp
     src/file/filemanager.cpp
     src/file/parsingfileinfo.cpp
-    src/file/jsonfile.cpp
+    src/file/filemetadatacreate.cpp
+
 
 
     src/load/dataloadmanager.cpp
