@@ -12,6 +12,6 @@ public:
     virtual QByteArray readall() = 0;
     virtual QString    getFileInfo()=0;
     virtual bool isOpen() = 0;
-    virtual ~AbstractFile() = default;
+    virtual ~IFileReader() = default;
 };
 #endif
