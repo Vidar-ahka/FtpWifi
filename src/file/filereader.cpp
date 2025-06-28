@@ -1,18 +1,18 @@
-#include"file/file.h"
+#include"file/filereader.h"
 
 
- FileReader:: FileReader(const QString  path) : path(path)
+FileReader:: FileReader(const QString  path) : path(path)
 {
    create_file(path);
 
 }
 
- FileReader:: FileReader(const File & file)
+ FileReader:: FileReader(const FileReader & file)
 {
     this->operator =(file);
 }
 
- FileReader &  FileReader:: operator =(const File& file_copy)
+ FileReader &  FileReader:: operator =(const FileReader& file_copy)
 {
     this->path = file_copy.path;
     if(file_byte)

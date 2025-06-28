@@ -34,7 +34,7 @@ private:
     bool create_file(QString path);
     void Move( FileReader & file);
 
-    QString paht;
+    QString path;
 
 
 
