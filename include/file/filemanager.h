@@ -1,7 +1,7 @@
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
-#include"file.h"
+#include"filereader.h"
 #include"memory"
 
 class FileManager
