@@ -8,8 +8,7 @@ class Connect : public AbstractConnect
 public:
     Connect() = default;
     Connect(std::unique_ptr<QAbstractSocket> socket);
-
-    quint64    send( const std::shared_ptr<AbstractFile> file) override;
+    quint64    send( const std::shared_ptr<IFileReader> file) override;
     virtual ~Connect() = default;
 private:
    static int id;

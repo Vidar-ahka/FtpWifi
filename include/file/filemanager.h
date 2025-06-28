@@ -9,7 +9,7 @@ class FileManager
 public:
     FileManager();
 
-    std::shared_ptr<File> getFile( const QString path);
+    std::shared_ptr<FileReader> getFile( const QString path);
     virtual ~FileManager() = default;
 
 private:

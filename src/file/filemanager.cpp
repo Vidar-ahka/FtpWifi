@@ -5,7 +5,7 @@ FileManager::FileManager()
 {
 
 }
-std::shared_ptr<File> FileManager::getFile(const QString path)
+std::shared_ptr<FileReader> FileManager::getFile(const QString path)
 {
-    return std::make_shared<File>(path);
+    return std::make_shared<FileReader>(path);
 }

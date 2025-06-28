@@ -7,11 +7,10 @@ Connect::Connect(std::unique_ptr<QAbstractSocket> socket)  : AbstractConnect(std
 
 }
 
-quint64    Connect::send(const std::shared_ptr<AbstractFile> file)
+quint64    Connect::send(const std::shared_ptr<IFileReader > file)
 {
     if(file->isOpen())
     {
-
         return (socket->write(file->getFileInfo().toUtf8()) + socket->write(file->readall()));
     }
     return 0;
@@ -19,15 +18,7 @@ quint64    Connect::send(const std::shared_ptr<AbstractFile> file)
 
 void Connect::readyread()
 {
-    emit signalread(id_connect,socket->readAll());
+    emit signalread(socket->readAll());
 }
-
-QByteArray read()
-{
-
-
-
-}
-
 
 int Connect::id = 0;
