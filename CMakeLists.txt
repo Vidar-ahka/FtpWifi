@@ -20,8 +20,11 @@ include_directories("./include")
 set(PROJECT_HEADERS
     include/main/mainwindow.h
 
-    include/file/fileabstract.h
-    include/file/file.h
+
+    include/file/ifilereader.h
+
+
+    include/file/filereader.h
     include/file/filemanager.h
     include/file/abstractparsingfileinfo.h
     include/file/parsingfileinfo.h
@@ -43,7 +46,7 @@ set(PROJECT_SOURCES
     src/main/main.cpp
     src/main/mainwindow.cpp
 
-    src/file/file.cpp
+    src/file/filereader.cpp
     src/file/filemanager.cpp
     src/file/parsingfileinfo.cpp
     src/file/filemetadatacreate.cpp
