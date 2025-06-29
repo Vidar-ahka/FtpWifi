@@ -30,7 +30,7 @@ set(PROJECT_HEADERS
     include/file/parsingfileinfo.h
     include/file/filemetadatacreate.h
 
-    include/load/abstractload.h
+    include/load/iload.h
     include/load/dataloadmanager.h
     include/load/load.h
 
