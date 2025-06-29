@@ -2,7 +2,7 @@
 #define ABSTRACTCONNECT_H
 #include"QAbstractSocket"
 #include"memory"
-#include"file/ifilereader.h".h"
+#include"file/ifilereader.h"
 class AbstractConnect : public QObject
 {
     Q_OBJECT
