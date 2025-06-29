@@ -1,7 +1,7 @@
 #include"load/load.h"
 
 Load::Load(){}
-Load::Load(const QString path , const quint64 _exsize):AbstractLoad(path) , exsize(_exsize) , cursize(0)
+Load::Load(const QString path , const quint64 _exsize) : path(path), exsize(_exsize), cursize(0)
 {
     create_file(path);
 }
