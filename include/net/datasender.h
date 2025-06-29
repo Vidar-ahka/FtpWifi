@@ -8,6 +8,11 @@ class DataSender : public IDataSender
 public:
    DataSender()  = default;
    DataSender(std::shared_ptr<QAbstractSocket> socket);
+
+
+   DataSender& operator =(DataSender & datasender);
+   DataSender& operator =(DataSender && datasender);
+
    void send(QByteArray byte) override;
    virtual ~DataSender();
 private:
