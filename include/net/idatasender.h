@@ -3,8 +3,9 @@
 #include"QByteArray"
 class IDataSender
 {
+public:
 virtual void send(QByteArray) = 0;
-virtual ~IDataSernder()= default;
-}
+virtual ~IDataSender () = default;
+};
 #endif
 
