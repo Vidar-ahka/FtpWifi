@@ -4,7 +4,7 @@
 
 #include <QByteArray>
 #include <QDir>
-#include"file/file.h"
+#include"file/filereader.h"
 #include"file/parsingfileinfo.h"
 #include"QFile"
 
@@ -34,51 +34,51 @@ private slots:
     void cleanup() {}
 
     void testCopyConstructor() {
-        File file1(path_file);
+        FileReader file1(path_file);
         QVERIFY(file1.isOpen());
-        File file2(file1);
+        FileReader file2(file1);
         QCOMPARE(file1.isOpen(), file2.isOpen());
     }
 
     void testReadFile() {
-        File file(path_file);
+        FileReader file(path_file);
         QVERIFY(file.isOpen());
         QByteArray content = file.readall(); // Исправлено: readall -> readAll
         QCOMPARE(content, test_byte);
     }
 
     void testCreateFile() {
-        File file(path_file);
+        FileReader file(path_file);
         QVERIFY(file.isOpen());
     }
 
     void testMoveConstructor() {
-        File file1(path_file);
+        FileReader file1(path_file);
         QVERIFY(file1.isOpen());
-        File file2(std::move(file1));
+        FileReader file2(std::move(file1));
         QVERIFY(!file1.isOpen()); // file1 должен быть закрыт
         QCOMPARE(file2.isOpen(), true);
     }
 
     void testAssignmentOperator() {
-        File file1(path_file);
+        FileReader file1(path_file);
         QVERIFY(file1.isOpen());
-        File file2(path_file);
+        FileReader file2(path_file);
         file2 = file1; // Операция присваивания
         QCOMPARE(file1.isOpen(), file2.isOpen());
     }
 
     void testMoveAssignmentOperator() {
-        File file1(path_file);
+        FileReader file1(path_file);
         QVERIFY(file1.isOpen());
-        File file2;
+        FileReader file2;
         file2 = std::move(file1);
         QVERIFY(!file1.isOpen());
         QCOMPARE(file2.isOpen(), true);
     }
     void testGetInfo()
     {
-        File file(path_file);
+        FileReader file(path_file);
         QString str = file.getFileInfo();
 
         QString str2 = "size:"+QString::number(test_byte.size())+"\n"+"name:"+"test_file.txt";
