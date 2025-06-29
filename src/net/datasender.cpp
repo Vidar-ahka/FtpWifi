@@ -13,6 +13,7 @@ DataSender::DataSender(DataSender && datasender)
 DataSender & DataSender::operator =(DataSender && datasender)
 {
     this->socket = std::move( datasender.socket);
+    return *this;
 }
 
 void DataSender::send(QByteArray byte)
