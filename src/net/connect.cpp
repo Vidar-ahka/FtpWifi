@@ -1,6 +1,7 @@
 #include"net/connect.h"
 
-Connect::Connect(std::unique_ptr<QAbstractSocket> socket)  : AbstractConnect(std::move(socket))
+Connect::Connect(std::unique_ptr<QAbstractSocket> socket)
+    : AbstractConnect(std::move(socket))
 {
     id_connect = id++;
     QObject::connect(this->socket.get() , &QAbstractSocket::readyRead , this, &Connect::readyread);
@@ -13,6 +14,7 @@ quint64    Connect::send(const std::shared_ptr<IFileReader > file)
     {
         return (socket->write(file->getFileInfo().toUtf8()) + socket->write(file->readall()));
     }
+
     return 0;
 }
 

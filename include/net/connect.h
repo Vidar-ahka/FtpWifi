@@ -1,7 +1,7 @@
 #ifndef CONNECT_H
 #define CONNECT_H
 #include"abstractconnect.h"
-#include"QTcpSocket"
+#include"QByteArray"
 class Connect : public AbstractConnect
 {
     Q_OBJECT
