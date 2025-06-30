@@ -14,7 +14,7 @@ public:
    DataSender& operator =(DataSender && datasender);
 
    void send(QByteArray byte) override;
-   virtual ~DataSender();
+   virtual ~DataSender() = default;
 private:
    std::shared_ptr<QAbstractSocket> socket;
 };

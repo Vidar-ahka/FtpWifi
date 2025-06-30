@@ -20,7 +20,7 @@ void DataSender::send(QByteArray byte)
 {
     if(socket && !byte.isEmpty() )
     {
-        this->send(byte);
+        socket->write(byte);
     }
 }
 
