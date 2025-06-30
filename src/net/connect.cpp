@@ -3,6 +3,10 @@
 Connect::Connect(std::unique_ptr<QAbstractSocket> socket)
     : AbstractConnect(std::move(socket))
 {
+    if(socket == NULL)
+    {
+       return;
+    }
     id_connect = id++;
     QObject::connect(this->socket.get() , &QAbstractSocket::readyRead , this, &Connect::readyread);
 
