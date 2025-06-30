@@ -34,10 +34,16 @@ set(PROJECT_HEADERS
     include/load/dataloadmanager.h
     include/load/load.h
 
-    include/net/connect.h
-    include/net/abstractconnect.h
+
     include/net/server.h
-    include/net/connectfactory.h
+
+
+    include/net/idatasender.h
+    include/net/datasender.h
+
+    include/net/idatareceiver.h
+    include/net/datareceiver.h
+
 
 
 
@@ -56,9 +62,11 @@ set(PROJECT_SOURCES
     src/load/dataloadmanager.cpp
     src/load/load.cpp
 
-    src/net/connect.cpp
+
     src/net/server.cpp
-    src/net/connectfactory.cpp
+    src/net/datasender.cpp
+    src/net/datareceiver.cpp
+
 
 )
 set(PROJECT_UI  
