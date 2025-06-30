@@ -10,7 +10,7 @@ public:
    DataSender(std::shared_ptr<QAbstractSocket> socket);
 
 
-   DataSender& operator =(DataSender & datasender);
+   DataSender (DataSender && datasender);
    DataSender& operator =(DataSender && datasender);
 
    void send(QByteArray byte) override;
