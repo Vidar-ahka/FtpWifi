@@ -1,7 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 #include"QTcpServer"
-#include"connect.h"
+
 class Server : public QTcpServer
 {
     Q_OBJECT

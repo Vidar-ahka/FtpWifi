@@ -3,8 +3,6 @@
 DataReceiver::DataReceiver(std::shared_ptr<QAbstractSocket> socket)
 {
     this->socket = socket;
-
-
 }
 
 DataReceiver::DataReceiver(DataReceiver && datareceiver)
@@ -12,13 +10,11 @@ DataReceiver::DataReceiver(DataReceiver && datareceiver)
   this->socket =   std::move(datareceiver.socket);
 
 }
-DataReceiver::DataReceiver & operator =(DataReceiver &&datareceiver)
+DataReceiver & DataReceiver :: operator =(DataReceiver &&datareceiver)
 {
     this->socket =   std::move(datareceiver.socket);
-
-    return *this;
+    return * this;
 }
-
 void DataReceiver::readyread()
 {
     emit signalread(this->socket->readAll());

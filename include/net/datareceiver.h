@@ -8,7 +8,8 @@ public:
     DataReceiver() = default;
     DataReceiver(std::shared_ptr<QAbstractSocket> socket);
     DataReceiver(DataReceiver && datareceiver);
-    DataReceiver & operator =
+    DataReceiver & operator =(DataReceiver &&datareceiver);
+
     virtual ~DataReceiver();
 protected:
     virtual  void readyread();

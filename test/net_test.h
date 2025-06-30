@@ -3,7 +3,7 @@
 #include"QDebug"
 #include"QTcpSocket"
 #include"file/filereader.h"
-#include"net/connect.h"
+
 #include"net/server.h"
 #include"thread"
 #include"file/filemetadatacreate.h"
@@ -26,9 +26,6 @@ private slots:
         std::unique_ptr<QTcpSocket> u_socket = std::make_unique<QTcpSocket>();
 
         u_socket->connectToHost(QHostAddress("127.0.0.1"),7777);
-        Connect con(std::move(u_socket));
-        con.send(file);
-
 
 
     }
