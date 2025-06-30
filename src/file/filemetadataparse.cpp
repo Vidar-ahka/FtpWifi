@@ -4,8 +4,13 @@
 
 void FileMetaDataParse::parse(QByteArray byte)
 {
+    if(isValid(byte))
+    {
+        return;
+    }
 
-
+    QJsonDocument doc = QJsonDocument::fromJson(byte);
+    QJsonObject::operator =(doc.object());
 }
 
 bool FileMetaDataParse::isValid(QByteArray byte)
