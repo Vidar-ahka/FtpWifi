@@ -35,7 +35,7 @@ set(PROJECT_HEADERS
     include/load/load.h
 
 
-    include/net/server.h
+    include/net/iserver.h
 
 
     include/net/idatasender.h
@@ -63,7 +63,6 @@ set(PROJECT_SOURCES
     src/load/load.cpp
 
 
-    src/net/server.cpp
     src/net/datasender.cpp
     src/net/datareceiver.cpp
 
