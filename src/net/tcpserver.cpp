@@ -20,6 +20,7 @@ void TcpServer:: handleNewConnection()
     std::shared_ptr<QTcpSocket> socket(server->nextPendingConnection());
     std::shared_ptr<DataReceiver> datareceiver = std::make_shared<DataReceiver>(socket);
     hash_dr[socket->socketDescriptor()] = datareceiver;
+
 }
 
 
