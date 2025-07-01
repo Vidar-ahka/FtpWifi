@@ -2,30 +2,34 @@
 
 TcpServer::TcpServer(QString addres , quint16 port)
 {
-    server = std::make_shared<QTcpServer>();
+
+    server = std::make_unique<QTcpServer>();
+
     if(!server->listen(QHostAddress(addres),port))
     {
         return;
     }
+    connect(server.get(),&QTcpServer::newConnection,this,TcpServer::handleNewConnection);
 }
-
-void TcpServer::incomingConnection(qintptr socketDescriptor)
+TcpServer::~TcpServer()
 {
-
-    std::shared_ptr<QTcpSocket> socket = std::make_shared<QTcpSocket>();
-    socket->setSocketDescriptor(socketDescriptor);
+    hash_dr.clear();
+}
+void TcpServer:: handleNewConnection()
+{
+    std::shared_ptr<QTcpSocket> socket(server->nextPendingConnection());
     std::shared_ptr<DataReceiver> datareceiver = std::make_shared<DataReceiver>(socket);
-    hash_dr[socketDescriptor] = datareceiver;
-
-    connect(datareceiver.get(),&DataReceiver::signalread,this,TcpServer::read);
-
-
+    hash_dr[socket->socketDescriptor()] = datareceiver;
 }
 
 
 void TcpServer::read(QByteArray byte)
 {
-
     emit signalread(byte);
 }
 
+void TcpServer::disconnect()
+{
+    QTcpSocket * socket  =  static_cast<QTcpSocket*>(sender());
+    hash_dr.remove(socket->socketDescriptor());
+}

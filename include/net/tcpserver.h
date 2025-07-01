@@ -7,25 +7,24 @@
 #include"QTcpSocket"
 #include"datareceiver.h"
 #include"QHash"
-class TcpServer :  public IServer , public QTcpServer
+
+class TcpServer :  public IServer
 {
+
 public:
 
     TcpServer() = default;
     TcpServer(QString addres , quint16 port);
-    void incomingConnection(qintptr socektDescriptor);
-
-
-
-
-
+    virtual ~TcpServer();
 
 private:
     QHash<qintptr,std::shared_ptr<DataReceiver>> hash_dr;
+    std::unique_ptr<QTcpServer> server;
+
 private slots:
     void read(QByteArray byte);
+    void disconnect();
+    void handleNewConnection();
 
-
-
-
+  };
 #endif
