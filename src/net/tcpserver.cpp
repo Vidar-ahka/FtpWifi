@@ -11,15 +11,21 @@ TcpServer::TcpServer(QString addres , quint16 port)
 
 void TcpServer::incomingConnection(qintptr socketDescriptor)
 {
+
     std::shared_ptr<QTcpSocket> socket = std::make_shared<QTcpSocket>();
     socket->setSocketDescriptor(socketDescriptor);
-
     std::shared_ptr<DataReceiver> datareceiver = std::make_shared<DataReceiver>(socket);
     hash_dr[socketDescriptor] = datareceiver;
 
+    connect(datareceiver.get(),&DataReceiver::signalread,this,TcpServer::read);
 
 
 }
 
 
+void TcpServer::read(QByteArray byte)
+{
+
+    emit signalread(byte);
+}
 

@@ -19,8 +19,13 @@ public:
 
 
 
+
 private:
     QHash<qintptr,std::shared_ptr<DataReceiver>> hash_dr;
+private slots:
+    void read(QByteArray byte);
+
+
 
 
 #endif
