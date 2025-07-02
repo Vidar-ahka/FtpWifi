@@ -14,7 +14,7 @@ class TcpServer :  public IServer
 public:
 
     TcpServer() = default;
-    TcpServer(QString addres , quint16 port);
+    TcpServer(quint16 port);
     virtual ~TcpServer();
 
 private:
