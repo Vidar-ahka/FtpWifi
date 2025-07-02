@@ -1,11 +1,11 @@
 #include"net/tcpserver.h"
 
-TcpServer::TcpServer(QString addres , quint16 port)
+TcpServer::TcpServer( quint16 port)
 {
 
     server = std::make_unique<QTcpServer>();
 
-    if(!server->listen(QHostAddress(addres),port))
+    if(!server->listen(QHostAddress::Any,port))
     {
         return;
     }
