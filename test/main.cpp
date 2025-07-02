@@ -12,6 +12,8 @@ int main(int argc, char *argv[])
     FileTest f;
     NetTest  n;
     QTest::qExec(&n, argc, argv);
+    QTest::qExec(&f, argc, argv);
+
 
     return a.exec();
 }
