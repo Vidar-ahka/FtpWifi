@@ -29,6 +29,9 @@ set(PROJECT_HEADERS
     include/file/abstractparsingfileinfo.h
     include/file/parsingfileinfo.h
     include/file/filemetadatacreate.h
+    include/file/filemetadataparse.h
+
+
 
     include/load/iload.h
     include/load/dataloadmanager.h
@@ -36,6 +39,7 @@ set(PROJECT_HEADERS
 
 
     include/net/iserver.h
+    include/net/tcpserver.h
 
 
     include/net/idatasender.h
@@ -56,6 +60,7 @@ set(PROJECT_SOURCES
     src/file/filemanager.cpp
     src/file/parsingfileinfo.cpp
     src/file/filemetadatacreate.cpp
+    src/file/filemetadataparse.cpp
 
 
 
@@ -65,6 +70,9 @@ set(PROJECT_SOURCES
 
     src/net/datasender.cpp
     src/net/datareceiver.cpp
+    src/net/tcpserver.cpp
+
+
 
 
 )
