@@ -14,6 +14,7 @@ class FileMetaDataParse : public QJsonObject
 {
 public:
     FileMetaDataParse()=default;
+    FileMetaDataParse(QByteArray byte);
     ~FileMetaDataParse()=default;
     void parse(QByteArray byte);
     static  bool isValid(QByteArray byte);

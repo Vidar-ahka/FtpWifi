@@ -4,7 +4,7 @@
 
 void FileMetaDataParse::parse(QByteArray byte)
 {
-    if(isValid(byte))
+    if(!isValid(byte))
     {
         return;
     }
@@ -22,6 +22,7 @@ bool FileMetaDataParse::isValid(QByteArray byte)
 {
     if(byte[0] != '{' && byte[0] != '[')
     {
+        qDebug()<<"\n - " << byte;
         return false;
     }
     QJsonParseError parse;
